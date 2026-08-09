@@ -19,6 +19,12 @@
     <maven.compiler.target>8</maven.compiler.target>
   </properties>
 
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>models</module>
+  </modules>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
