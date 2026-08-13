@@ -24,11 +24,13 @@ public class RosterEngine {
 	private List<Role> roles;
 	private List<Event> events;
 	
-	private Map<SoloRole, List<Person>> allSoloCandidates = new HashMap<>();
-	private Map<PairedRole, List<Pairing>> allPairedCandidates = new HashMap<>();
+	// private PersonManager personManager = new PersonManager();
+	// personManager.getEligiblePeople(role, date)
+	// personManager.updateCounters(person, role, date)
 	
-	private RosterEngine() {
-    }
+	private CandidateManager candidateManager;
+	
+	private RosterEngine() { }
 
     public static Builder builder() {
         return new Builder();
@@ -70,43 +72,13 @@ public class RosterEngine {
             return engine;
         }
     }
-	
-	public Map<SoloRole, List<Person>> getAllSoloCandidates() {
-	    return allSoloCandidates;
-	}
-
-	public Map<PairedRole, List<Pairing>> getAllPairedCandidates() {
-	    return allPairedCandidates;
-	}
-	
-	private void setup() {
-		processRoles();
-		processPeople();
-		processPairings();
-	}
-	
-	private void processRoles() {
-		for (Role role : roles) {
-			if (role instanceof SoloRole) {
-				allSoloCandidates.put((SoloRole) role, new ArrayList<>());
-			} else {
-				allPairedCandidates.put((PairedRole) role, new ArrayList<>());
-			}
-		}
-	}
-	
-	private void processPeople() {
-		for (Person person: people) {
-			for (PersonRole personRole : person.getRoles()) {
-				allSoloCandidates.get(personRole.getRole()).add(person);
-			}
-		}
-	}
-	
-	private void processPairings() {
-		for (Pairing pairing : pairings) {
-			allPairedCandidates.get(pairing.getRole()).add(pairing);
-		}
-	}
+    
+    private void setup() {
+    	candidateManager = CandidateManager.builder()
+								.people(people)
+								.pairings(pairings)
+								.roles(roles)
+								.build();
+    }
 	
 }

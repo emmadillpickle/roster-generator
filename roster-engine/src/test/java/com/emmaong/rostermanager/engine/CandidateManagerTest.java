@@ -15,7 +15,7 @@ import com.emmaong.rostermanager.models.Person;
 import com.emmaong.rostermanager.models.PersonRole;
 import com.emmaong.rostermanager.models.SoloRole;
 
-public class RosterEngineTest {
+public class CandidateManagerTest {
 
 	@Test
 	void shouldInitializeSoloRoleCandidateList() {
@@ -24,14 +24,14 @@ public class RosterEngineTest {
 	    						.name("Wallop")
 	    						.build();
 
-	    RosterEngine engine = RosterEngine.builder()
+	    CandidateManager manager = CandidateManager.builder()
 	            .roles(List.of(wallop))
 	            .build();
 
-	    assertTrue(engine.getAllSoloCandidates().containsKey(wallop));
+	    assertTrue(manager.getAllSoloCandidates().containsKey(wallop));
 	    assertEquals(
 	            0,
-	            engine.getAllSoloCandidates().get(wallop).size());
+	            manager.getAllSoloCandidates().get(wallop).size());
 	}
 	
 	@Test
@@ -41,14 +41,14 @@ public class RosterEngineTest {
 	    							.name("Worship")
 	    							.build();
 
-	    RosterEngine engine = RosterEngine.builder()
+	    CandidateManager manager = CandidateManager.builder()
 	            .roles(List.of(worshipTeam))
 	            .build();
 
-	    assertTrue(engine.getAllPairedCandidates().containsKey(worshipTeam));
+	    assertTrue(manager.getAllPairedCandidates().containsKey(worshipTeam));
 	    assertEquals(
 	            0,
-	            engine.getAllPairedCandidates().get(worshipTeam).size());
+	            manager.getAllPairedCandidates().get(worshipTeam).size());
 	}
 	
 	@Test
@@ -69,13 +69,13 @@ public class RosterEngineTest {
 	    					.roles(Set.of(personRole))
 	    					.build();
 
-	    RosterEngine engine = RosterEngine.builder()
+	    CandidateManager manager = CandidateManager.builder()
 	    		.people(List.of(emma))
 	            .roles(List.of(wallop))
 	            .build();
 
 	    List<Person> candidates =
-	            engine.getAllSoloCandidates().get(wallop);
+	    		manager.getAllSoloCandidates().get(wallop);
 
 	    assertEquals(1, candidates.size());
 	    assertTrue(candidates.contains(emma));
@@ -110,13 +110,13 @@ public class RosterEngineTest {
                 .roles(Set.of(johnWorshipRole))
                 .build();
 
-        RosterEngine engine = RosterEngine.builder()
+        CandidateManager manager = CandidateManager.builder()
                 .people(List.of(emma, john))
                 .roles(List.of(worship))
                 .build();
 
         List<Person> candidates =
-                engine.getAllSoloCandidates().get(worship);
+                manager.getAllSoloCandidates().get(worship);
 
         assertEquals(2, candidates.size());
         assertTrue(candidates.contains(emma));
@@ -146,18 +146,18 @@ public class RosterEngineTest {
                 .roles(Set.of(worshipRole))
                 .build();
 
-        RosterEngine engine = RosterEngine.builder()
+        CandidateManager manager = CandidateManager.builder()
                 .people(List.of(emma))
                 .roles(List.of(worship, welcome))
                 .build();
 
         assertEquals(
                 1,
-                engine.getAllSoloCandidates().get(worship).size());
+                manager.getAllSoloCandidates().get(worship).size());
 
         assertEquals(
                 0,
-                engine.getAllSoloCandidates().get(welcome).size());
+                manager.getAllSoloCandidates().get(welcome).size());
     }
 
     @Test
@@ -185,13 +185,13 @@ public class RosterEngineTest {
                 .shiftsWorked(0)
                 .build();
 
-        RosterEngine engine = RosterEngine.builder()
+        CandidateManager manager = CandidateManager.builder()
                 .pairings(List.of(pairing))
                 .roles(List.of(worshipTeam))
                 .build();
 
         List<Pairing> candidates =
-                engine.getAllPairedCandidates().get(worshipTeam);
+        		manager.getAllPairedCandidates().get(worshipTeam);
 
         assertEquals(1, candidates.size());
         assertTrue(candidates.contains(pairing));
@@ -238,13 +238,13 @@ public class RosterEngineTest {
                 .maxShifts(5)
                 .build();
 
-        RosterEngine engine = RosterEngine.builder()
+        CandidateManager manager = CandidateManager.builder()
                 .pairings(List.of(pairing1, pairing2))
                 .roles(List.of(worshipTeam))
                 .build();
 
         List<Pairing> candidates =
-                engine.getAllPairedCandidates().get(worshipTeam);
+        		manager.getAllPairedCandidates().get(worshipTeam);
 
         assertEquals(2, candidates.size());
         assertTrue(candidates.contains(pairing1));
