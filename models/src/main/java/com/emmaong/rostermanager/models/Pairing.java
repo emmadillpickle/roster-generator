@@ -1,5 +1,6 @@
 package com.emmaong.rostermanager.models;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 public class Pairing {
@@ -49,29 +50,49 @@ public class Pairing {
         }
     }
 
-
-	public long getId() {
-		return id;
-	}
-
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-
-	public Set<Person> getPeople() {
-		return people;
-	}
-
-
-	public void setPeople(Set<Person> people) {
-		this.people = people;
-	}
-	
 	public PairedRole getRole() {
 		return role;
 	}
 	
+	public int getShiftsWorked() {
+		return shiftsWorked;
+	}
+	
+	public int getMaxShifts() {
+		return maxShifts;
+	}
+	
+	public boolean isAvailableOn(LocalDate date) {
+		boolean canServe = true;
+		
+		for (Person person : people) {
+			canServe = canServe && person.isAvailableOn(date);
+		}
+		
+		return canServe;
+	}
+	
+	public boolean isNotOnCooldown(LocalDate date) {
+		boolean canServe = true;
+		
+		for (Person person : people) {
+			canServe = canServe && person.isNotOnCooldown(date);
+		}
+		
+		return canServe;
+	}
+	
+	public boolean hasRemainingShiftsFor(PairedRole role) {
+		return shiftsWorked < maxShifts;
+		
+	}
+	
+	public void updateCounters(LocalDate date) {
+		shiftsWorked++;
+		
+		for (Person person : people) {
+			person.setLastServed(date);
+		}
+	}
 	
 }

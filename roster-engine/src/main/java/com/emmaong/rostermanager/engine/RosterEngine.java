@@ -24,10 +24,6 @@ public class RosterEngine {
 	private List<Role> roles;
 	private List<Event> events;
 	
-	// private PersonManager personManager = new PersonManager();
-	// personManager.getEligiblePeople(role, date)
-	// personManager.updateCounters(person, role, date)
-	
 	private CandidateManager candidateManager;
 	
 	private RosterEngine() { }

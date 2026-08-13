@@ -11,8 +11,8 @@ public class Person {
 	private String name;
 	private int cooldown;
 	private LocalDate lastServed;
-	private Set<PersonRole> roles;
-	private Set<LocalDate> unavailability;
+	private Set<PersonRole> roles = new HashSet<>();
+	private Set<LocalDate> unavailability = new HashSet<>();
 	
 	
 	private Person() { }
@@ -58,26 +58,50 @@ public class Person {
             return person;
         }
     }
+    
+    public LocalDate getLastServed() {
+    	return lastServed;
+    }
+    
+    public void setLastServed(LocalDate lastServed) {
+    	this.lastServed = lastServed;
+    }
 
 	public boolean isAvailableOn(LocalDate date) {
 		return !unavailability.contains(date);
 	}
 	
-	public int getcooldown() {
-		return cooldown;
+	public boolean isNotOnCooldown(LocalDate date) {
+		if (lastServed == null) return true;
+		
+		LocalDate canServeNext = lastServed.plusWeeks(cooldown + 1);
+		return date.isAfter(canServeNext) || date.isEqual(canServeNext);
+	}
+	
+	public boolean hasRemainingShiftsFor(SoloRole role) {
+		return roles.stream()
+		        .filter(pr -> pr.getRole().getName().equals(role.getName()))
+		        .findFirst()
+		        .map(pr -> pr.getShiftsWorked() < pr.getMaxShifts())
+		        .orElse(false);
 	}
 	
 	public Set<PersonRole> getRoles() {
 		return roles;
 	}
 	
-	public void setLastServed(LocalDate lastServed) {
-		this.lastServed = lastServed;
+	public void updateCounters(SoloRole role, LocalDate date) {
+		PersonRole personRole = roles.stream()
+				.filter(pr -> pr.getRole().getName().equals(role.getName()))
+				.findFirst()
+				.orElse(null);
+		
+		if (personRole == null) {
+			throw new IllegalStateException("Trying to update " + name + "'s counter for " + role.getName() + ", but they don't do this role!");
+		}
+		
+		lastServed = date;
+		personRole.setShiftsWorked(personRole.getShiftsWorked() + 1);
 	}
-	
-	public LocalDate getLastServed() {
-		return lastServed;
-	}
-	
 	
 }

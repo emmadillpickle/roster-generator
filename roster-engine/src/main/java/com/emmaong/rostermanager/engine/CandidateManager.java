@@ -1,5 +1,6 @@
 package com.emmaong.rostermanager.engine;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -95,5 +96,25 @@ public class CandidateManager {
 		for (Pairing pairing : pairings) {
 			allPairedCandidates.get(pairing.getRole()).add(pairing);
 		}
+	}
+	
+	public List<Person> getEligibleCandidates(SoloRole role, LocalDate date) {
+		List<Person> eligibleCandidates = allSoloCandidates.get(role).stream()
+			    .filter(person -> person.isAvailableOn(date))
+			    .filter(person -> person.isNotOnCooldown(date))
+			    .filter(person -> person.hasRemainingShiftsFor(role))
+			    .toList();
+		
+		return eligibleCandidates;
+	}
+	
+	public List<Pairing> getEligibleCandidates(PairedRole role, LocalDate date) {
+		List<Pairing> eligibleCandidates = allPairedCandidates.get(role).stream()
+				.filter(pairing -> pairing.isAvailableOn(date))
+				.filter(pairing -> pairing.isNotOnCooldown(date))
+				.filter(pairing -> pairing.hasRemainingShiftsFor(role))
+				.toList();
+		
+		return eligibleCandidates;
 	}
 }
