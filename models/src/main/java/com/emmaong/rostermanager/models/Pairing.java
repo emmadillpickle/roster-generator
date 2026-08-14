@@ -62,6 +62,10 @@ public class Pairing {
 		return maxShifts;
 	}
 	
+	public Set<Person> getPeople() {
+		return people;
+	}
+	
 	public boolean isAvailableOn(LocalDate date) {
 		boolean canServe = true;
 		
