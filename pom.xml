@@ -23,7 +23,8 @@
 
   <modules>
     <module>models</module>
-    <module>roster-engine</module>           
+    <module>roster-engine</module>
+    <module>backend</module>           
   </modules>
 
   <dependencies>
