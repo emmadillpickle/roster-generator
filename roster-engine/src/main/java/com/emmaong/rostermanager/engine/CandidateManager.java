@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.emmaong.rostermanager.engine.RosterEngine.Builder;
 import com.emmaong.rostermanager.models.Event;
@@ -98,21 +99,24 @@ public class CandidateManager {
 		}
 	}
 	
-	public List<Person> getEligibleCandidates(SoloRole role, LocalDate date) {
+	public List<Person> getEligibleCandidates(SoloRole role, LocalDate date, Set<Person> used) {
 		List<Person> eligibleCandidates = allSoloCandidates.get(role).stream()
 			    .filter(person -> person.isAvailableOn(date))
 			    .filter(person -> person.isNotOnCooldown(date))
 			    .filter(person -> person.hasRemainingShiftsFor(role))
+			    .filter(person -> !used.contains(person))
 			    .toList();
 		
 		return eligibleCandidates;
 	}
 	
-	public List<Pairing> getEligibleCandidates(PairedRole role, LocalDate date) {
+	public List<Pairing> getEligibleCandidates(PairedRole role, LocalDate date, Set<Person> used) {
 		List<Pairing> eligibleCandidates = allPairedCandidates.get(role).stream()
 				.filter(pairing -> pairing.isAvailableOn(date))
 				.filter(pairing -> pairing.isNotOnCooldown(date))
 				.filter(pairing -> pairing.hasRemainingShiftsFor(role))
+				.filter(pairing -> pairing.getPeople().stream()
+	                    .noneMatch(used::contains))
 				.toList();
 		
 		return eligibleCandidates;

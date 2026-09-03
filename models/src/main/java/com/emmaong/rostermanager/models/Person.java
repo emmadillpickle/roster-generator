@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class Person {
@@ -102,6 +103,23 @@ public class Person {
 		
 		lastServed = date;
 		personRole.setShiftsWorked(personRole.getShiftsWorked() + 1);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+	    if (this == obj) {
+	        return true;
+	    }
+	    if (!(obj instanceof Person)) {
+	        return false;
+	    }
+	    Person other = (Person) obj;
+	    return Objects.equals(name, other.name);
+	}
+
+	@Override
+	public int hashCode() {
+	    return Objects.hashCode(name);
 	}
 	
 }

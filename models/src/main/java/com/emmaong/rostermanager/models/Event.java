@@ -1,14 +1,12 @@
 package com.emmaong.rostermanager.models;
 
 import java.time.LocalDate;
-import java.util.Set;
-
-import com.emmaong.rostermanager.models.Pairing.Builder;
+import java.util.List;
 
 public class Event {
 	private long id;
 	private LocalDate date;
-	private Set<RoleCount> roles;
+	private List<RoleCount> roles;
 	
 	
 	private Event() { }
@@ -30,7 +28,7 @@ public class Event {
         	return this;
         }
         
-        public Builder roles(Set<RoleCount> roles) {
+        public Builder roles(List<RoleCount> roles) {
         	event.roles = roles;
         	return this;
         }
@@ -56,11 +54,11 @@ public class Event {
 		this.date = date;
 	}
 
-	public Set<RoleCount> getRoles() {
+	public List<RoleCount> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Set<RoleCount> roles) {
+	public void setRoles(List<RoleCount> roles) {
 		this.roles = roles;
 	}
 	
