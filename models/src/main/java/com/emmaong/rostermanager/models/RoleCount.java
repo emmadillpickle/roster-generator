@@ -4,10 +4,26 @@ public class RoleCount {
 	private Role role;
 	private int requiredCount;
 	
-	public RoleCount(Role role, int requiredCount) {
-		super();
-		this.role = role;
-		this.requiredCount = requiredCount;
+	public static Builder builder() {
+		return new Builder();
+	}
+	
+	public static class Builder {
+		private final RoleCount roleCount = new RoleCount();
+		
+		public Builder role(Role role) {
+			roleCount.role = role;
+			return this;
+		}
+		
+		public Builder requiredCount(int requiredCount) {
+			roleCount.requiredCount = requiredCount;
+			return this;
+		}
+		
+		public RoleCount build() {
+			return roleCount;
+		}
 	}
 
 	public Role getRole() {
