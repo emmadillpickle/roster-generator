@@ -19,6 +19,13 @@
     <maven.compiler.target>8</maven.compiler.target>
   </properties>
 
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>models</module>
+    <module>roster-engine</module>           
+  </modules>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
