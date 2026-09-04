@@ -31,7 +31,7 @@ Planned technology stack:
 - Java
 - Spring Boot
 - React
-- PostgreSQL (or another relational database)
+- SQLite
 - Maven
 - REST APIs
 
