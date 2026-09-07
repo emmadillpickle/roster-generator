@@ -60,6 +60,18 @@ public class Person {
         }
     }
     
+	public long getId() {
+		return id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public int getCooldown() {
+		return cooldown;
+	}
+    
     public LocalDate getLastServed() {
     	return lastServed;
     }
