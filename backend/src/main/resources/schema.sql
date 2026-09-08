@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS event (
 CREATE TABLE IF NOT EXISTS person_role (
     person_id INTEGER NOT NULL,
     role_id INTEGER NOT NULL,
+    max_shifts INTEGER NOT NULL DEFAULT -1,
 
     PRIMARY KEY (person_id, role_id),
 

@@ -75,7 +75,7 @@ class SlackCalculatorTest {
 
         PersonRole personRole = PersonRole.builder()
 				                .role(welcome)
-				                .maxShifts(0)
+				                .maxShifts(-1)
 				                .build();
 
         Person person = Person.builder()
@@ -319,7 +319,7 @@ class SlackCalculatorTest {
 
         Pairing pairing = Pairing.builder()
 			                .people(Set.of(person1, person2))
-			                .maxShifts(0)
+			                .maxShifts(-1)
 			                .build();
 
         List<Event> events = List.of(

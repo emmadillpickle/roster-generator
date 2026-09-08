@@ -22,7 +22,7 @@ import com.emmaong.rostermanager.models.SoloRole;
  * them out for the rest of the period.
  */
 public class SlackCalculator {
-    private static final int NO_CAP = 0;
+    private static final int NO_CAP = -1;
 
 
     public int calculateSlack(Person person, SoloRole role, List<Event> remainingEvents) {

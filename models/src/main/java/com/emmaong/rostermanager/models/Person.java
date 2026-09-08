@@ -76,8 +76,20 @@ public class Person {
     	return lastServed;
     }
     
+    public Set<LocalDate> getUnavailability() {
+    	return unavailability;
+    }
+    
     public void setLastServed(LocalDate lastServed) {
     	this.lastServed = lastServed;
+    }
+
+    public void setUnavailability(Set<LocalDate> unavailability) {
+    	this.unavailability = unavailability;
+    }
+    
+    public void setRoles(Set<PersonRole> roles) {
+    	this.roles = roles;
     }
 
 	public boolean isAvailableOn(LocalDate date) {
