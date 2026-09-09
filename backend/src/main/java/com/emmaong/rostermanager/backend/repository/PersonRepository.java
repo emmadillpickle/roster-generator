@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Repository;
 
 import com.emmaong.rostermanager.models.Person;
 import com.emmaong.rostermanager.models.PersonRole;
-import com.emmaong.rostermanager.models.Role;
 import com.emmaong.rostermanager.models.SoloRole;
 
 @Repository

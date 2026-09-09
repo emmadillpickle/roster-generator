@@ -15,6 +15,7 @@ import com.emmaong.rostermanager.backend.repository.RoleRepository;
 import com.emmaong.rostermanager.models.Event;
 import com.emmaong.rostermanager.models.Person;
 import com.emmaong.rostermanager.models.PersonRole;
+import com.emmaong.rostermanager.models.RoleCount;
 import com.emmaong.rostermanager.models.SoloRole;
 
 @RestController
@@ -37,7 +38,7 @@ public class RosterController {
     
     @GetMapping("/test") 
     public String test() {
-    	personRepository.deleteById(1);
+    	eventRepository.deleteById(4);
     	
     	return "done!";
     }
