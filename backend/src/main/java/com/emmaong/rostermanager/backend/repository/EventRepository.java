@@ -3,11 +3,9 @@ package com.emmaong.rostermanager.backend.repository;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -15,7 +13,6 @@ import org.springframework.stereotype.Repository;
 
 import com.emmaong.rostermanager.models.Event;
 import com.emmaong.rostermanager.models.PairedRole;
-import com.emmaong.rostermanager.models.PersonRole;
 import com.emmaong.rostermanager.models.Role;
 import com.emmaong.rostermanager.models.RoleCount;
 import com.emmaong.rostermanager.models.SoloRole;

@@ -1,12 +1,16 @@
 package com.emmaong.rostermanager.backend.repository;
 
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -63,6 +67,40 @@ public class PersonRepository {
 	                person.setRoles(findPersonRoleById(id));
 	                return person;
 	            });
+	}
+	
+	public Map<Long, Person> findByIds(Collection<Long> ids) {
+
+	    if (ids.isEmpty()) {
+	        return Collections.emptyMap();
+	    }
+
+	    String placeholders = ids.stream()
+	            .map(id -> "?")
+	            .collect(Collectors.joining(","));
+
+	    Map<Long, Person> people = findPeopleByIds(ids, placeholders);
+	    Map<Long, Set<LocalDate>> unavailableDates = findLocalDateByIds(ids, placeholders);
+	    Map<Long, Set<PersonRole>> personRoles = findPersonRolesByIds(ids, placeholders);
+
+	    for (Person person : people.values()) {
+
+	        person.setUnavailability(
+	                unavailableDates.getOrDefault(
+	                        person.getId(),
+	                        Collections.emptySet()
+	                )
+	        );
+
+	        person.setRoles(
+	                personRoles.getOrDefault(
+	                        person.getId(),
+	                        Collections.emptySet()
+	                )
+	        );
+	    }
+
+	    return people;
 	}
 	
 	public List<Person> findAll() {
@@ -129,11 +167,9 @@ public class PersonRepository {
 	}
 	
 	private Person saveToUnavailableDateTable(Person person) {
-		System.out.println("here1");
 		Set<LocalDate> dates = person.getUnavailability();
 		
 		if (!dates.isEmpty()) {
-			System.out.println("here2");
 			jdbcTemplate.batchUpdate(
 			    "INSERT OR IGNORE INTO unavailable_date (person_id, date) VALUES (?, ?)",
 			    dates,
@@ -145,7 +181,6 @@ public class PersonRepository {
 			);
 		}
 		
-		System.out.println("here3");
 		return person;
 	}
 	
@@ -176,6 +211,21 @@ public class PersonRepository {
 		return people.stream().findFirst();
 	}
 	
+	private Map<Long, Person> findPeopleByIds(Collection<Long> ids, String placeholders) {
+		String sql = """
+		    SELECT *
+		    FROM person
+		    WHERE id IN (%s)
+		    """.formatted(placeholders);
+
+		return jdbcTemplate.query(
+		    sql,
+		    personMapper,
+		    ids.toArray()
+		).stream()
+		 .collect(Collectors.toMap(Person::getId, Function.identity()));
+	}
+	
 	private Set<LocalDate> findUnavailableDateById(long id) {
 		return new HashSet<>( 
 				jdbcTemplate.query(
@@ -183,6 +233,27 @@ public class PersonRepository {
 					(rs, rowNum) -> LocalDate.parse(rs.getString("date")),
 					id
 		));
+	}
+	
+	private Map<Long, Set<LocalDate>> findLocalDateByIds(Collection<Long> ids, String placeholders) {
+		String sql = """
+		    SELECT *
+		    FROM unavailable_date
+		    WHERE person_id IN (%s)
+		    """.formatted(placeholders);
+
+		return jdbcTemplate.query(sql, rs -> {
+		        Map<Long, Set<LocalDate>> result = new HashMap<>();
+
+		        while (rs.next()) {
+		            long personId = rs.getLong("person_id");
+
+		            result.computeIfAbsent(personId, k -> new HashSet<>())
+		                  .add(unavailableDateMapper.mapRow(rs, 0));
+		        }
+
+		        return result;
+		    }, ids.toArray());
 	}
 	
 	private Set<PersonRole> findPersonRoleById(long id) {
@@ -201,6 +272,33 @@ public class PersonRepository {
 					    personRoleMapper,
 					    id
 		));
+	}
+	
+	private Map<Long, Set<PersonRole>> findPersonRolesByIds(Collection<Long> ids, String placeholders) {
+		String roleSql = """
+		    SELECT
+		        pr.person_id,
+		        pr.max_shifts,
+		        r.id AS role_id,
+		        r.name AS role_name
+		    FROM person_role pr
+		    JOIN role r
+		        ON pr.role_id = r.id
+		    WHERE pr.person_id IN (%s)
+		    """.formatted(placeholders);
+		
+		return jdbcTemplate.query(roleSql, rs -> {
+		        Map<Long, Set<PersonRole>> result = new HashMap<>();
+
+		        while (rs.next()) {
+		            long personId = rs.getLong("person_id");
+
+		            result.computeIfAbsent(personId, k -> new HashSet<>())
+		                  .add(personRoleMapper.mapRow(rs, 0));
+		        }
+
+		        return result;
+		    }, ids.toArray());
 	}
 	
 	private Map<Long, Set<LocalDate>> findAllUnavailableDates() {

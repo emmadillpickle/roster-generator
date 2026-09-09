@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.emmaong.rostermanager.backend.repository.EventRepository;
+import com.emmaong.rostermanager.backend.repository.PairingRepository;
 import com.emmaong.rostermanager.backend.repository.PersonRepository;
 import com.emmaong.rostermanager.backend.repository.RoleRepository;
 import com.emmaong.rostermanager.models.Event;
+import com.emmaong.rostermanager.models.PairedRole;
+import com.emmaong.rostermanager.models.Pairing;
 import com.emmaong.rostermanager.models.Person;
 import com.emmaong.rostermanager.models.PersonRole;
 import com.emmaong.rostermanager.models.RoleCount;
@@ -24,11 +27,13 @@ public class RosterController {
 	private final PersonRepository personRepository;
 	private final RoleRepository roleRepository;
 	private final EventRepository eventRepository;
+	private final PairingRepository pairingRepository;
 	
-	public RosterController(PersonRepository personRepository, RoleRepository roleRepository, EventRepository eventRepository) {
+	public RosterController(PersonRepository personRepository, RoleRepository roleRepository, EventRepository eventRepository, PairingRepository pairingRepository) {
 		this.personRepository = personRepository;
 		this.roleRepository = roleRepository;
 		this.eventRepository = eventRepository;
+		this.pairingRepository = pairingRepository;
 	}
 
     @GetMapping("/healthcheck")
@@ -38,8 +43,7 @@ public class RosterController {
     
     @GetMapping("/test") 
     public String test() {
-    	eventRepository.deleteById(4);
-    	
+    	pairingRepository.deleteById(1L);
     	return "done!";
     }
 }

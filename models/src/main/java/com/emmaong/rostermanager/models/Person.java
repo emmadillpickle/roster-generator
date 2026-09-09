@@ -128,18 +128,6 @@ public class Person {
 		lastServed = date;
 		personRole.setShiftsWorked(personRole.getShiftsWorked() + 1);
 	}
-	
-	@Override
-	public boolean equals(Object obj) {
-	    if (this == obj) {
-	        return true;
-	    }
-	    if (!(obj instanceof Person)) {
-	        return false;
-	    }
-	    Person other = (Person) obj;
-	    return Objects.equals(name, other.name);
-	}
 
 	@Override
 	public int hashCode() {

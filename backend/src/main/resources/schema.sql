@@ -68,6 +68,7 @@ CREATE TABLE IF NOT EXISTS role_count (
 CREATE TABLE IF NOT EXISTS pairing (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     role_id INTEGER NOT NULL,
+    max_shifts INTEGER NOT NULL DEFAULT -1,
 
     FOREIGN KEY (role_id) 
         REFERENCES role(id)
