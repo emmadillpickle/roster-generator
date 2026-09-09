@@ -43,7 +43,13 @@ public class RosterController {
     
     @GetMapping("/test") 
     public String test() {
-    	pairingRepository.deleteById(1L);
-    	return "done!";
+    	List<Pairing> pairings = pairingRepository.findAll();
+    	String ret = "";
+    	
+    	for (Pairing received : pairings) {
+    		ret = ret + " // " + received.getId() + ", " + received.getPeople().toString() + ", " + received.getRole().getName() + ", " + received.getMaxShifts();
+    	}
+    	
+    	return ret;
     }
 }

@@ -159,9 +159,23 @@ public class PairingRepository {
 	                        Collections.emptySet()
 	                );
 	
-	        Set<Person> people = memberIds.stream()
-	                .map(peopleById::get)
-	                .collect(Collectors.toSet());
+	        Set<Person> people = new HashSet<>();
+
+	        for (Long personId : memberIds) {
+	            Person person = peopleById.get(personId);
+
+	            if (person == null) {
+	                throw new IllegalStateException(
+	                        "Person " + personId
+	                        + " referenced by pairing " + pairing.getId()
+	                        + " does not exist"
+	                );
+	            }
+
+	            people.add(person);
+	        }
+
+	        pairing.setPeople(people);
 	
 	        pairing.setPeople(people);
 	    }
