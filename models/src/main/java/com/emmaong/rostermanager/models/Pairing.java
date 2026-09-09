@@ -7,7 +7,7 @@ public class Pairing {
 	private long id;
 	private Set<Person> people;
 	private PairedRole role;
-	private int maxShifts;
+	private int maxShifts = -1;
 	private int shiftsWorked;
 	
 	
@@ -49,6 +49,10 @@ public class Pairing {
             return pairing;
         }
     }
+    
+    public long getId() {
+    	return id;
+    }
 
 	public PairedRole getRole() {
 		return role;
@@ -64,6 +68,10 @@ public class Pairing {
 	
 	public Set<Person> getPeople() {
 		return people;
+	}
+	
+	public void setPeople(Set<Person> people) {
+		this.people = people;
 	}
 	
 	public boolean isAvailableOn(LocalDate date) {

@@ -2,7 +2,7 @@ package com.emmaong.rostermanager.models;
 
 public class PersonRole {
 	private SoloRole role;
-	private int maxShifts;
+	private int maxShifts = -1;
 	private int shiftsWorked;
 	
 	private PersonRole() { }

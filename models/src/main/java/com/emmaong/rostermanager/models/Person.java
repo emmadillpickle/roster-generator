@@ -60,12 +60,36 @@ public class Person {
         }
     }
     
+	public long getId() {
+		return id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public int getCooldown() {
+		return cooldown;
+	}
+    
     public LocalDate getLastServed() {
     	return lastServed;
     }
     
+    public Set<LocalDate> getUnavailability() {
+    	return unavailability;
+    }
+    
     public void setLastServed(LocalDate lastServed) {
     	this.lastServed = lastServed;
+    }
+
+    public void setUnavailability(Set<LocalDate> unavailability) {
+    	this.unavailability = unavailability;
+    }
+    
+    public void setRoles(Set<PersonRole> roles) {
+    	this.roles = roles;
     }
 
 	public boolean isAvailableOn(LocalDate date) {
@@ -103,18 +127,6 @@ public class Person {
 		
 		lastServed = date;
 		personRole.setShiftsWorked(personRole.getShiftsWorked() + 1);
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-	    if (this == obj) {
-	        return true;
-	    }
-	    if (!(obj instanceof Person)) {
-	        return false;
-	    }
-	    Person other = (Person) obj;
-	    return Objects.equals(name, other.name);
 	}
 
 	@Override
