@@ -48,7 +48,7 @@ public class PairingRepository {
 		return savedPairing;
 	}
 	
-	public Pairing findById(long pairingId) {
+	public Optional<Pairing> findById(long pairingId) {
 
 	    String pairingSql = """
 	        SELECT
@@ -69,7 +69,7 @@ public class PairingRepository {
 	    );
 	    
 	    if (pairings.isEmpty()) {	
-	        return null;
+	        Optional.empty();
 	    }
 	    
 	    Pairing pairing = pairings.stream().findFirst().get();
@@ -95,7 +95,7 @@ public class PairingRepository {
 	                    .collect(Collectors.toSet())
 	    );
 
-	    return pairing;
+	    return Optional.of(pairing);
 	}
 	
 	public List<Pairing> findAll() {
