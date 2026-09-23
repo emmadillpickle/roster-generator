@@ -1,4 +1,4 @@
-package com.emmaong.rostermanager.backend.dto;
+package com.emmaong.rostermanager.backend.dto.request;
 
 import java.time.LocalDate;
 import java.util.List;

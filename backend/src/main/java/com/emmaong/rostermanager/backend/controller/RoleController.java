@@ -13,44 +13,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.emmaong.rostermanager.backend.dto.request.EventRequest;
-import com.emmaong.rostermanager.backend.service.EventService;
-import com.emmaong.rostermanager.models.Event;
+import com.emmaong.rostermanager.backend.dto.request.RoleRequest;
+import com.emmaong.rostermanager.backend.dto.response.RoleResponse;
+import com.emmaong.rostermanager.backend.service.RoleService;
 
 @RestController
-@RequestMapping("/api/events")
-public class EventController {
-	private final EventService eventService;
+@RequestMapping("/api/roles")
+public class RoleController {
+	private final RoleService roleService;
 	
-	public EventController(EventService eventService) {
-		this.eventService = eventService;
+	public RoleController(RoleService roleService) {
+		this.roleService = roleService;
 	}
 	
 	@GetMapping
-	public List<Event> getAllEvents() {
-		return eventService.findAll();
+	public List<RoleResponse> getAllRoles() {
+		return roleService.getAll();
 	}
 	
 	@GetMapping("/{id}")
-	public Event getEvent(@PathVariable long id) {
-		return eventService.findById(id);
+	public RoleResponse getRole(@PathVariable long id) {
+		return roleService.getById(id);
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public Event createEvent(@RequestBody EventRequest request) {
-		return eventService.save(request);
+	public RoleResponse createRole(@RequestBody RoleRequest request) {
+		return roleService.save(request);
 	}
 	
 	@PutMapping("/{id}")
-	public Event updateEvent(@PathVariable long id, @RequestBody EventRequest request) {
-		return eventService.update(id, request);
+	public RoleResponse updateRole(@PathVariable long id, @RequestBody RoleRequest request) {
+		return roleService.update(id, request);
 	}
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void deleteEvent(@PathVariable long id) {
-		eventService.deleteById(id);
+	public void deleteRole(@PathVariable long id) {
+		roleService.deleteById(id);
 	}	
-	
 }

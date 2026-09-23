@@ -1,4 +1,4 @@
-package com.emmaong.rostermanager.backend.dto;
+package com.emmaong.rostermanager.backend.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +13,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class RoleCountRequest {
-	private long roleId;
-	private int requiredCount;
+public class RoleRequest {
+	private String name;
+	private String roleType;
 }

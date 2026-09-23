@@ -5,8 +5,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.emmaong.rostermanager.backend.dto.EventRequest;
-import com.emmaong.rostermanager.backend.dto.RoleCountRequest;
+import com.emmaong.rostermanager.backend.dto.request.EventRequest;
+import com.emmaong.rostermanager.backend.dto.request.RoleCountRequest;
 import com.emmaong.rostermanager.backend.exception.ResourceNotFoundException;
 import com.emmaong.rostermanager.backend.repository.EventRepository;
 import com.emmaong.rostermanager.backend.service.RoleService;
