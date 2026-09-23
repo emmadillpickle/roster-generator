@@ -29,7 +29,7 @@ public class PairingRepository {
 	}
 	
 	private final RowMapper<Pairing> pairingMapper = (rs, rowNum) -> {
-	    PairedRole role = new PairedRole.Builder()
+	    PairedRole role = PairedRole.builder()
 	            .id(rs.getLong("role_id"))
 	            .name(rs.getString("role_name"))
 	            .build();

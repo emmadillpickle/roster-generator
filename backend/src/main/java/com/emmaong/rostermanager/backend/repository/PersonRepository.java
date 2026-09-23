@@ -40,7 +40,7 @@ public class PersonRepository {
 		
 	private final RowMapper<PersonRole> personRoleMapper = (rs, rowNum) -> {
 
-	    SoloRole role = new SoloRole.Builder()
+	    SoloRole role = SoloRole.builder()
 	            .id(rs.getLong("id"))
 	            .name(rs.getString("name"))
 	            .build();

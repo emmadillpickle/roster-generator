@@ -18,11 +18,13 @@ class PairingTest {
         LocalDate date = LocalDate.of(2026, 8, 15);
 
         Person emma = Person.builder()
+        		.id(1)
                 .name("Emma")
                 .unavailability(Set.of())
                 .build();
 
         Person john = Person.builder()
+        		.id(2)
                 .name("John")
                 .unavailability(Set.of())
                 .build();
@@ -39,11 +41,13 @@ class PairingTest {
         LocalDate date = LocalDate.of(2026, 8, 15);
 
         Person emma = Person.builder()
+        		.id(1)
                 .name("Emma")
                 .unavailability(Set.of(date))
                 .build();
 
         Person john = Person.builder()
+        		.id(2)
                 .name("John")
                 .unavailability(Set.of())
                 .build();
@@ -60,11 +64,13 @@ class PairingTest {
         LocalDate date = LocalDate.of(2026, 8, 15);
 
         Person emma = Person.builder()
+        		.id(1)
                 .name("Emma")
                 .unavailability(Set.of(date))
                 .build();
 
         Person john = Person.builder()
+        		.id(2)
                 .name("John")
                 .unavailability(Set.of(date))
                 .build();
@@ -81,12 +87,14 @@ class PairingTest {
         LocalDate date = LocalDate.of(2026, 8, 15);
 
         Person emma = Person.builder()
+        		.id(1)
                 .name("Emma")
                 .unavailability(Set.of(LocalDate.of(2026, 8, 16)))
                 .build();
 
         Person john = Person.builder()
                 .name("John")
+                .id(2)
                 .unavailability(Set.of(LocalDate.of(2026, 8, 17)))
                 .build();
 
@@ -107,12 +115,14 @@ class PairingTest {
         LocalDate date = LocalDate.of(2026, 8, 15);
 
         Person emma = Person.builder()
+        		.id(1)
                 .name("Emma")
                 .lastServed(null)
                 .cooldown(1)
                 .build();
 
         Person john = Person.builder()
+        		.id(2)
                 .name("John")
                 .lastServed(null)
                 .cooldown(1)
@@ -130,12 +140,14 @@ class PairingTest {
         LocalDate date = LocalDate.of(2026, 8, 10);
 
         Person emma = Person.builder()
+        		.id(1)
                 .name("Emma")
                 .lastServed(LocalDate.of(2026, 8, 1))
                 .cooldown(1)
                 .build();
 
         Person john = Person.builder()
+        		.id(2)
                 .name("John")
                 .lastServed(null)
                 .cooldown(1)
@@ -153,12 +165,14 @@ class PairingTest {
         LocalDate date = LocalDate.of(2026, 8, 10);
 
         Person emma = Person.builder()
+        		.id(1)
                 .name("Emma")
                 .lastServed(LocalDate.of(2026, 8, 1))
                 .cooldown(1)
                 .build();
 
         Person john = Person.builder()
+        		.id(2)
                 .name("John")
                 .lastServed(LocalDate.of(2026, 8, 1))
                 .cooldown(1)
@@ -176,12 +190,14 @@ class PairingTest {
         LocalDate date = LocalDate.of(2026, 8, 16);
 
         Person emma = Person.builder()
+        		.id(1)
                 .name("Emma")
                 .lastServed(LocalDate.of(2026, 8, 1))
                 .cooldown(1)
                 .build();
 
         Person john = Person.builder()
+        		.id(2)
                 .name("John")
                 .lastServed(LocalDate.of(2026, 8, 1))
                 .cooldown(1)
@@ -200,7 +216,7 @@ class PairingTest {
     // -------------------------------------------------------------------------
 
     @Test
-    void hasRemainingShiftsFor_returnsTrueWhenShiftsRemain() {
+    void hasRemainingShiftsFor_returnsTrueWhenShiftsRemain() {    	
         PairedRole role = PairedRole.builder()
                 .name("Worship")
                 .build();
@@ -251,10 +267,12 @@ class PairingTest {
         LocalDate date = LocalDate.of(2026, 8, 15);
 
         Person emma = Person.builder()
+        		.id(1)
                 .name("Emma")
                 .build();
 
         Person john = Person.builder()
+        		.id(2)
                 .name("John")
                 .build();
 
@@ -274,10 +292,12 @@ class PairingTest {
         LocalDate date = LocalDate.of(2026, 8, 15);
 
         Person emma = Person.builder()
+        		.id(1)
                 .name("Emma")
                 .build();
 
         Person john = Person.builder()
+        		.id(2)
                 .name("John")
                 .build();
 

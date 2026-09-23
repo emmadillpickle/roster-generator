@@ -48,8 +48,8 @@ class RosterBuilderTest {
 
     @Test
     void shouldAddMultipleSoloAssignmentsToSameEvent() {
-        Person alice = Person.builder().name("Alice").build();
-        Person bob = Person.builder().name("Bob").build();
+        Person alice = Person.builder().id(1).name("Alice").build();
+        Person bob = Person.builder().id(2).name("Bob").build();
 
         SoloRole role = SoloRole.builder().name("welcome").build();
 
@@ -78,10 +78,12 @@ class RosterBuilderTest {
         SoloRole role = SoloRole.builder().name("welcome").build();
 
         Event event1 = Event.builder()
+        		.id(1)
                 .date(LocalDate.of(2026, 1, 1))
                 .build();
 
         Event event2 = Event.builder()
+        		.id(2)
                 .date(LocalDate.of(2026, 1, 8))
                 .build();
 
@@ -97,8 +99,8 @@ class RosterBuilderTest {
 
     @Test
     void shouldCreateRosterEntryWhenAssigningPairedRoleToNewEvent() {
-        Person alice = Person.builder().name("Alice").build();
-        Person bob = Person.builder().name("Bob").build();
+        Person alice = Person.builder().id(1).name("Alice").build();
+        Person bob = Person.builder().id(2).name("Bob").build();
 
         Pairing pairing = Pairing.builder()
 			                .people(Set.of(alice, bob))
@@ -132,10 +134,10 @@ class RosterBuilderTest {
 
     @Test
     void shouldAddMultiplePairedAssignmentsToSameEvent() {
-        Person alice = Person.builder().name("Alice").build();
-        Person bob = Person.builder().name("Bob").build();
-        Person charlie = Person.builder().name("Charlie").build();
-        Person dave = Person.builder().name("Dave").build();
+        Person alice = Person.builder().id(1).name("Alice").build();
+        Person bob = Person.builder().id(2).name("Bob").build();
+        Person charlie = Person.builder().id(3).name("Charlie").build();
+        Person dave = Person.builder().id(4).name("Dave").build();
 
         Pairing pairing1 = Pairing.builder()
                 .people(Set.of(alice, bob))
@@ -167,9 +169,9 @@ class RosterBuilderTest {
 
     @Test
     void shouldAllowSoloAndPairedAssignmentsOnSameEvent() {
-        Person alice = Person.builder().name("Alice").build();
-        Person bob = Person.builder().name("Bob").build();
-        Person charlie = Person.builder().name("Charlie").build();
+        Person alice = Person.builder().id(1).name("Alice").build();
+        Person bob = Person.builder().id(2).name("Bob").build();
+        Person charlie = Person.builder().id(3).name("Charlie").build();
 
         SoloRole soloRole = SoloRole.builder()
                 .name("Speaker")
@@ -306,8 +308,8 @@ class RosterBuilderTest {
 
     @Test
     void shouldReuseExistingRosterEntryWhenFlaggingUnfillablePairedRole() {
-        Person alice = Person.builder().name("Alice").build();
-        Person bob = Person.builder().name("Bob").build();
+        Person alice = Person.builder().id(1).name("Alice").build();
+        Person bob = Person.builder().id(2).name("Bob").build();
 
         Pairing pairing = Pairing.builder()
                 .people(Set.of(alice, bob))
