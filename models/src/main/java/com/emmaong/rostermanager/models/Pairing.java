@@ -1,78 +1,34 @@
 package com.emmaong.rostermanager.models;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(of = "id")
+@ToString
 public class Pairing {
 	private long id;
-	private Set<Person> people;
 	private PairedRole role;
-	private int maxShifts = -1;
 	private int shiftsWorked;
 	
-	
-	private Pairing() { }
+	@Builder.Default
+	private int maxShifts = -1;
 
-    public static Builder builder() {
-        return new Builder();
-    }
-
-    public static class Builder {
-        private final Pairing pairing = new Pairing();
-
-        public Builder id(long id) {
-            pairing.id = id;
-            return this;
-        }
-
-        public Builder people(Set<Person> people) {
-            pairing.people = people;
-            return this;
-        }
-
-        public Builder role(PairedRole role) {
-            pairing.role = role;
-            return this;
-        }
-
-        public Builder maxShifts(int maxShifts) {
-            pairing.maxShifts = maxShifts;
-            return this;
-        }
-
-        public Builder shiftsWorked(int shiftsWorked) {
-            pairing.shiftsWorked = shiftsWorked;
-            return this;
-        }
-
-        public Pairing build() {
-            return pairing;
-        }
-    }
-    
-    public long getId() {
-    	return id;
-    }
-
-	public PairedRole getRole() {
-		return role;
-	}
-	
-	public int getShiftsWorked() {
-		return shiftsWorked;
-	}
-	
-	public int getMaxShifts() {
-		return maxShifts;
-	}
-	
-	public Set<Person> getPeople() {
-		return people;
-	}
-	
-	public void setPeople(Set<Person> people) {
-		this.people = people;
-	}
+	@Builder.Default
+	private Set<Person> people = new HashSet<>();
 	
 	public boolean isAvailableOn(LocalDate date) {
 		boolean canServe = true;

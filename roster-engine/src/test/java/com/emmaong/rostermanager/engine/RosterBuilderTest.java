@@ -140,10 +140,12 @@ class RosterBuilderTest {
         Person dave = Person.builder().id(4).name("Dave").build();
 
         Pairing pairing1 = Pairing.builder()
+        		.id(1L)
                 .people(Set.of(alice, bob))
                 .build();
 
         Pairing pairing2 = Pairing.builder()
+        		.id(2L)
                 .people(Set.of(alice, bob))
                 .build();
 

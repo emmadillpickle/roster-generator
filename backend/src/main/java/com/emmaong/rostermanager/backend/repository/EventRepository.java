@@ -56,7 +56,7 @@ public class EventRepository {
 	    	throw new IllegalStateException("Unknown role type: " + roleType);
 	    }
 	    
-	    return new RoleCount.Builder().role(role).requiredCount(rs.getInt("count")).build();
+	    return RoleCount.builder().role(role).requiredCount(rs.getInt("count")).build();
 	};
 	
 	public Event save(Event event) {

@@ -4,30 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class RosterEntry {
 	private Event event;
+	
+	@Builder.Default
 	private List<SoloAssignment> soloAssignments = new ArrayList<>();
+	
+	@Builder.Default
 	private List<PairedAssignment> pairedAssignments = new ArrayList<>();
-	
-	private RosterEntry() { } 
-	
-	public static Builder builder() {
-		return new Builder();
-	}
-	
-	public static class Builder {
-		private final RosterEntry rosterEntry = new RosterEntry();
-		
-		public Builder event(Event event) {
-			rosterEntry.event = event;
-			return this;
-		}
-		
-		public RosterEntry build() {
-			return rosterEntry;
-		}
-	}
-	
+
 	public void addSoloAssignment(SoloAssignment assignment) {
 		boolean validAssignment = soloAssignments.stream()
 				.noneMatch(a -> 
@@ -41,7 +39,7 @@ public class RosterEntry {
 		
 		soloAssignments.add(assignment);
 	}
-	
+
 	public void addPairedAssignment(PairedAssignment assignment) {
 		boolean validAssignment = pairedAssignments.stream()
 				.noneMatch(a -> 
@@ -55,17 +53,4 @@ public class RosterEntry {
 		
 		pairedAssignments.add(assignment);
 	}
-	
-	public Event getEvent() {
-		return event;
-	}
-	
-	public List<SoloAssignment> getSoloAssignments() {
-		return soloAssignments;
-	}
-	
-	public List<PairedAssignment> getPairedAssignments() {
-		return pairedAssignments;
-	}
-	
 }

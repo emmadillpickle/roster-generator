@@ -33,84 +33,7 @@ public class Person {
 	
 	@Builder.Default
 	private Set<LocalDate> unavailability = new HashSet<>();
-//	
-//	
-//	private Person() { }
-//
-//    public static Builder builder() {
-//        return new Builder();
-//    }
-//
-//    public static class Builder {
-//        private final Person person = new Person();
-//
-//        public Builder id(long id) {
-//            person.id = id;
-//            return this;
-//        }
-//
-//        public Builder name(String name) {
-//            person.name = name;
-//            return this;
-//        }
-//
-//        public Builder cooldown(int cooldown) {
-//            person.cooldown = cooldown;
-//            return this;
-//        }
-//
-//        public Builder lastServed(LocalDate lastServed) {
-//            person.lastServed = lastServed;
-//            return this;
-//        }
-//
-//        public Builder roles(Set<PersonRole> roles) {
-//            person.roles = roles;
-//            return this;
-//        }
-//
-//        public Builder unavailability(Set<LocalDate> unavailability) {
-//            person.unavailability = unavailability;
-//            return this;
-//        }
-//
-//        public Person build() {
-//            return person;
-//        }
-//    }
-//    
-//	public long getId() {
-//		return id;
-//	}
-//	
-//	public String getName() {
-//		return name;
-//	}
-//	
-//	public int getCooldown() {
-//		return cooldown;
-//	}
-//    
-//    public LocalDate getLastServed() {
-//    	return lastServed;
-//    }
-//    
-//    public Set<LocalDate> getUnavailability() {
-//    	return unavailability;
-//    }
-//    
-//    public void setLastServed(LocalDate lastServed) {
-//    	this.lastServed = lastServed;
-//    }
-//
-//    public void setUnavailability(Set<LocalDate> unavailability) {
-//    	this.unavailability = unavailability;
-//    }
-//    
-//    public void setRoles(Set<PersonRole> roles) {
-//    	this.roles = roles;
-//    }
-//
+
 	public boolean isAvailableOn(LocalDate date) {
 		return !unavailability.contains(date);
 	}
@@ -129,11 +52,7 @@ public class Person {
 		        .map(pr -> pr.getShiftsWorked() < pr.getMaxShifts())
 		        .orElse(false);
 	}
-//	
-//	public Set<PersonRole> getRoles() {
-//		return roles;
-//	}
-//	
+	
 	public void updateCounters(SoloRole role, LocalDate date) {
 		PersonRole personRole = roles.stream()
 				.filter(pr -> pr.getRole().getName().equals(role.getName()))
@@ -147,10 +66,4 @@ public class Person {
 		lastServed = date;
 		personRole.setShiftsWorked(personRole.getShiftsWorked() + 1);
 	}
-//
-//	@Override
-//	public int hashCode() {
-//	    return Objects.hashCode(name);
-//	}
-	
 }
