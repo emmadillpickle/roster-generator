@@ -1,10 +1,11 @@
-package com.emmaong.rostermanager.backend.exception;
+package com.emmaong.rostermanager.backend.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.emmaong.rostermanager.backend.exception.ResourceNotFoundException;
 import com.emmaong.rostermanager.backend.repository.RoleRepository;
 import com.emmaong.rostermanager.models.Role;
 

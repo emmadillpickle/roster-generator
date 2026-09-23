@@ -115,8 +115,9 @@ public class EventRepository {
 			
 		}
 
+		System.out.println(event.getId());
 		jdbcTemplate.update(					
-				"UPDATE event SET date = ?, WHERE id = ?",
+				"UPDATE event SET date = ? WHERE id = ?",
 				event.getDate().toString(),
 				event.getId()
 		);
