@@ -122,8 +122,8 @@ class SlackCalculatorTest {
     
     @Test
     void shouldUsePairingCapacityWhenSmallerThanAvailability() {
-        Person p1 = Person.builder().name("Alice").build();
-        Person p2 = Person.builder().name("Bob").build();
+        Person p1 = Person.builder().id(1).name("Alice").build();
+        Person p2 = Person.builder().id(2).name("Bob").build();
     
         Pairing pairing = Pairing.builder()
 			                .people(Set.of(p1, p2))
@@ -144,8 +144,8 @@ class SlackCalculatorTest {
 
     @Test
     void shouldReturnZeroWhenPairingHasReachedMaxShifts() {
-		Person p1 = Person.builder().name("Alice").build();
-	    Person p2 = Person.builder().name("Bob").build();
+		Person p1 = Person.builder().id(1).name("Alice").build();
+	    Person p2 = Person.builder().id(2).name("Bob").build();
 
         Pairing pairing = Pairing.builder()
                 .people(Set.of(p1, p2))
@@ -309,11 +309,13 @@ class SlackCalculatorTest {
         LocalDate unavailableDate = LocalDate.of(2026, 1, 8);
 
         Person person1 = Person.builder()
+        					.id(1)
 			                .unavailability(Set.of(unavailableDate))
 			                .name("Alice")
 			                .build();
 
         Person person2 = Person.builder()
+        					.id(2)
         					.name("Bob")
             				.build();
 
@@ -342,8 +344,8 @@ class SlackCalculatorTest {
 
     @Test
     void shouldUsePairingCapacityEvenWhenAvailabilityIsHigher() {
-    	Person person1 = Person.builder().name("Alice").build();
-	    Person person2 = Person.builder().name("Bob").build();
+    	Person person1 = Person.builder().id(1).name("Alice").build();
+	    Person person2 = Person.builder().id(2).name("Bob").build();
 
         Pairing pairing = Pairing.builder()
 			                .people(Set.of(person1, person2))
