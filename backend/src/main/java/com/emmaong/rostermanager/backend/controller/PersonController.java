@@ -39,7 +39,6 @@ public class PersonController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public Person createPerson(@RequestBody PersonRequest request) {
-		System.out.println("CONTROLLER REACHED");
 		return personService.save(request);
 	}
 	

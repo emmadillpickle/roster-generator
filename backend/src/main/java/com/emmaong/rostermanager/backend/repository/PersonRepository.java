@@ -41,8 +41,8 @@ public class PersonRepository {
 	private final RowMapper<PersonRole> personRoleMapper = (rs, rowNum) -> {
 
 	    SoloRole role = SoloRole.builder()
-	            .id(rs.getLong("id"))
-	            .name(rs.getString("name"))
+	            .id(rs.getLong("role_id"))
+	            .name(rs.getString("role_name"))
 	            .build();
 
 	    return PersonRole.builder()

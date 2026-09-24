@@ -1,6 +1,5 @@
 package com.emmaong.rostermanager.backend.dto.request;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -14,7 +13,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class EventRequest {
-	private LocalDate date;
-	private List<RoleCountRequest> roles;
+public class PairingRequest {
+	private long roleId;
+	private Integer shiftsWorked;
+	private Integer maxShifts;
+	private List<Integer> people;
 }
