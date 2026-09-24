@@ -270,8 +270,8 @@ public class PersonRepository {
 					    SELECT
 					        pr.max_shifts,
 					        pr.shifts_worked,
-					        r.id,
-					        r.name
+					        r.id AS role_id,
+					        r.name AS role_name
 					    FROM person_role pr
 					    JOIN role r
 					        ON pr.role_id = r.id
@@ -337,8 +337,8 @@ public class PersonRepository {
 	                pr.person_id,
 	                pr.max_shifts,
 	                pr.shifts_worked,
-	                r.id,
-	                r.name
+	                r.id AS role_id,
+	                r.name AS role_name
 	            FROM person_role pr
 	            JOIN role r
 	                ON pr.role_id = r.id
