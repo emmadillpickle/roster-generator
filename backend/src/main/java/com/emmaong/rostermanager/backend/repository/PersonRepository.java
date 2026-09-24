@@ -190,10 +190,17 @@ public class PersonRepository {
 		for (PersonRole personRole : personRoles) {
 			if (personRole.getRole() instanceof SoloRole) {
 				jdbcTemplate.update(
-						"INSERT OR IGNORE INTO person_role (person_id, role_id, max_shifts) VALUES (?, ?, ?)",
+						"""
+						INSERT INTO person_role (person_id, role_id, max_shifts, shifts_worked)
+						VALUES (?, ?, ?, ?)
+						ON CONFLICT(person_id, role_id)
+						DO UPDATE SET max_shifts = excluded.max_shifts,
+						shifts_worked = excluded.shifts_worked	
+						""",
 						person.getId(),
 						personRole.getRole().getId(),
-						personRole.getMaxShifts()
+						personRole.getMaxShifts(),
+						personRole.getShiftsWorked()
 				);
 			}
 		}
@@ -262,6 +269,7 @@ public class PersonRepository {
 					    """
 					    SELECT
 					        pr.max_shifts,
+					        pr.shifts_worked,
 					        r.id,
 					        r.name
 					    FROM person_role pr
@@ -279,6 +287,7 @@ public class PersonRepository {
 		    SELECT
 		        pr.person_id,
 		        pr.max_shifts,
+		        pr.shifts_worked,
 		        r.id AS role_id,
 		        r.name AS role_name
 		    FROM person_role pr
@@ -327,6 +336,7 @@ public class PersonRepository {
 	            SELECT
 	                pr.person_id,
 	                pr.max_shifts,
+	                pr.shifts_worked,
 	                r.id,
 	                r.name
 	            FROM person_role pr
