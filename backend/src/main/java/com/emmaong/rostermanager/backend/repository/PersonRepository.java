@@ -41,8 +41,8 @@ public class PersonRepository {
 	private final RowMapper<PersonRole> personRoleMapper = (rs, rowNum) -> {
 
 	    SoloRole role = SoloRole.builder()
-	            .id(rs.getLong("id"))
-	            .name(rs.getString("name"))
+	            .id(rs.getLong("role_id"))
+	            .name(rs.getString("role_name"))
 	            .build();
 
 	    return PersonRole.builder()
@@ -190,10 +190,17 @@ public class PersonRepository {
 		for (PersonRole personRole : personRoles) {
 			if (personRole.getRole() instanceof SoloRole) {
 				jdbcTemplate.update(
-						"INSERT OR IGNORE INTO person_role (person_id, role_id, max_shifts) VALUES (?, ?, ?)",
+						"""
+						INSERT INTO person_role (person_id, role_id, max_shifts, shifts_worked)
+						VALUES (?, ?, ?, ?)
+						ON CONFLICT(person_id, role_id)
+						DO UPDATE SET max_shifts = excluded.max_shifts,
+						shifts_worked = excluded.shifts_worked	
+						""",
 						person.getId(),
 						personRole.getRole().getId(),
-						personRole.getMaxShifts()
+						personRole.getMaxShifts(),
+						personRole.getShiftsWorked()
 				);
 			}
 		}
@@ -262,8 +269,9 @@ public class PersonRepository {
 					    """
 					    SELECT
 					        pr.max_shifts,
-					        r.id,
-					        r.name
+					        pr.shifts_worked,
+					        r.id AS role_id,
+					        r.name AS role_name
 					    FROM person_role pr
 					    JOIN role r
 					        ON pr.role_id = r.id
@@ -279,6 +287,7 @@ public class PersonRepository {
 		    SELECT
 		        pr.person_id,
 		        pr.max_shifts,
+		        pr.shifts_worked,
 		        r.id AS role_id,
 		        r.name AS role_name
 		    FROM person_role pr
@@ -327,8 +336,9 @@ public class PersonRepository {
 	            SELECT
 	                pr.person_id,
 	                pr.max_shifts,
-	                r.id,
-	                r.name
+	                pr.shifts_worked,
+	                r.id AS role_id,
+	                r.name AS role_name
 	            FROM person_role pr
 	            JOIN role r
 	                ON pr.role_id = r.id

@@ -1,8 +1,7 @@
-package com.emmaong.rostermanager.models;
+package com.emmaong.rostermanager.backend.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,10 +12,9 @@ import lombok.ToString;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "role")
 @ToString
-public class PersonRole {
-	private SoloRole role;
-	private int maxShifts = -1;
-	private int shiftsWorked;
+public class RoleResponse {
+	private long id;
+	private String name;
+	private String roleType;
 }

@@ -1,6 +1,7 @@
 package com.emmaong.rostermanager.models;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Getter;
@@ -21,5 +22,7 @@ import lombok.EqualsAndHashCode;
 public class Event {
 	private long id;
 	private LocalDate date;
-	private List<RoleCount> roles;
+	
+	@Builder.Default
+	private List<RoleCount> roles = new ArrayList<>();
 }

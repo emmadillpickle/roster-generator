@@ -77,8 +77,9 @@ public class RoleRepository {
 		}
 		
 		jdbcTemplate.update(					
-			"UPDATE role SET name = ? WHERE id = ?",
+			"UPDATE role SET name = ?, role_type = ? WHERE id = ?",
 			role.getName(),
+			role instanceof SoloRole ? "SOLO" : "PAIRED",
 			role.getId()
 		);
 		
@@ -98,7 +99,7 @@ public class RoleRepository {
 	
 	public List<Role> findAll() {
 		return jdbcTemplate.query(
-				"SELECT * FROM roles", 
+				"SELECT * FROM role", 
 				mapper
 		);
 	}

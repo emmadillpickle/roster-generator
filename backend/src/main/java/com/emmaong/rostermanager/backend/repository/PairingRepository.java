@@ -176,8 +176,6 @@ public class PairingRepository {
 	        }
 
 	        pairing.setPeople(people);
-	
-	        pairing.setPeople(people);
 	    }
 	
 	    return pairings;
@@ -187,6 +185,14 @@ public class PairingRepository {
 		jdbcTemplate.update(
 				"DELETE FROM pairing WHERE id = ?", 
 				id
+		);
+	}
+	
+	public void removePersonById(long pairingId, long personId) {
+		jdbcTemplate.update(
+				"DELETE FROM pairing_member WHERE pairing_id = ? AND person_id = ?", 
+				pairingId,
+				personId
 		);
 	}
 	
