@@ -349,11 +349,13 @@ class RosterBuilderTest {
     @Test
     void shouldAddMultipleUnfillableSoloAssignmentsToSameEvent() {
         SoloRole welcomeRole = SoloRole.builder()
-                .name("welcome")
+                .id(1L)
+        		.name("welcome")
                 .build();
 
         SoloRole speakerRole = SoloRole.builder()
-                .name("Speaker")
+                .id(2L)
+        		.name("Speaker")
                 .build();
 
         Event event = Event.builder()
@@ -386,11 +388,13 @@ class RosterBuilderTest {
     @Test
     void shouldAddMultipleUnfillablePairedAssignmentsToSameEvent() {
         PairedRole welcomeRole = PairedRole.builder()
-                .name("welcome Team")
+                .id(1L)
+        		.name("welcome Team")
                 .build();
 
         PairedRole prayerRole = PairedRole.builder()
-                .name("Prayer Team")
+                .id(2L)
+        		.name("Prayer Team")
                 .build();
 
         Event event = Event.builder()

@@ -51,7 +51,7 @@ public class Pairing {
 	}
 	
 	public boolean hasRemainingShiftsFor(PairedRole role) {
-		return shiftsWorked < maxShifts;
+		return maxShifts == -1 || shiftsWorked < maxShifts;
 		
 	}
 	

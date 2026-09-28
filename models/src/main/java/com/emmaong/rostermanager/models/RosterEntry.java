@@ -26,14 +26,14 @@ public class RosterEntry {
 	@Builder.Default
 	private List<PairedAssignment> pairedAssignments = new ArrayList<>();
 
-	public void addSoloAssignment(SoloAssignment assignment) {
+	public void addSoloAssignment(SoloAssignment assignment) {		
 		boolean validAssignment = soloAssignments.stream()
 				.noneMatch(a -> 
 					    Objects.equals(a.getPerson(), assignment.getPerson())
 						&& Objects.equals(a.getRole(), assignment.getRole())
 				);
 		
-		if (!validAssignment) {
+		if (!validAssignment && assignment.getPerson() != null) {
 			throw new IllegalArgumentException("trying to double-assign a role or person with new assignment: " + assignment.toString());
 		}
 		
@@ -47,7 +47,7 @@ public class RosterEntry {
 						&& Objects.equals(a.getRole(), assignment.getRole())
 				);
 		
-		if (!validAssignment) {
+		if (!validAssignment && assignment.getPairing() != null) {
 			throw new IllegalArgumentException("trying to double-assign a role or person with new assignment: " + assignment.toString());
 		}
 		
