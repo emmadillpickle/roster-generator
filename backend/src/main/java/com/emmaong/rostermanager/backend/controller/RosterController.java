@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.emmaong.rostermanager.backend.dto.response.RosterResponse;
 import com.emmaong.rostermanager.backend.service.RosterService;
 import com.emmaong.rostermanager.models.Roster;
 
@@ -18,7 +19,7 @@ public class RosterController {
     }
 
     @PostMapping("/generate")
-    public Roster generateRoster() {
+    public RosterResponse generateRoster() {
         return rosterService.generateRoster();
     }
 }
