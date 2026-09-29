@@ -168,11 +168,13 @@ class PersonTest {
     @Test
     void hasRemainingShiftsFor_returnsFalseWhenPersonDoesNotHaveRole() {
         SoloRole worshipRole = SoloRole.builder()
-                .name("Worship")
+                .id(1L)
+        		.name("Worship")
                 .build();
 
         SoloRole welcomeRole = SoloRole.builder()
-                .name("Welcome")
+                .id(2L)
+        		.name("Welcome")
                 .build();
 
         PersonRole personRole = PersonRole.builder()

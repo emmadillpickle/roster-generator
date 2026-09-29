@@ -47,9 +47,9 @@ public class Person {
 	
 	public boolean hasRemainingShiftsFor(SoloRole role) {
 		return roles.stream()
-		        .filter(pr -> pr.getRole().getName().equals(role.getName()))
+				.filter(pr -> pr.getRole().getId() == role.getId())
 		        .findFirst()
-		        .map(pr -> pr.getShiftsWorked() < pr.getMaxShifts())
+		        .map(pr -> pr.getMaxShifts() == -1 || pr.getShiftsWorked() < pr.getMaxShifts())
 		        .orElse(false);
 	}
 	
