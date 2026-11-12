@@ -1,0 +1,74 @@
+.home-page {
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr);
+    min-height: 100vh;
+}
+
+.home-page-sidebar {
+    position: fixed;
+    height: 100vh;
+}
+
+.home-page-content {
+    width: 100vw;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+}
+
+.home-page-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    grid-column: 2;
+    padding: 40px;
+}
+
+.home-page-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.home-page-header-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #f3f3f2;
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid #dad9d9;
+    margin-bottom: 20px;
+}
+
+.home-page-header > h2 {
+    margin: 0px;
+    font-size: 2.0rem;
+    font-weight: 400;
+}
+
+.home-page-header > h1 {
+    margin: 0px;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.home-page-header > h3 {
+    margin: 0px;
+    font-weight: 400;
+    font-size: 1.15rem;
+    color: #585c60;
+}
+
+.home-page-tutorial {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.home-page-tutorial > h4 {
+    margin: 0px;
+    font-size: 1.2rem;
+}

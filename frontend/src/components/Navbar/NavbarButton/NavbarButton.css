@@ -1,0 +1,33 @@
+.icon {
+    height: 25px;
+    width: 25px;
+    color: #585c60;
+}
+
+.navbar-button-text {
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: #585c60;
+}
+
+.navbar-button {
+    display: flex;
+    gap: 20px;
+    width: 180px;
+    padding: 5px 0px 5px 10px;
+    align-items: center;
+    text-decoration: none;
+}
+
+.navbar-button:hover {
+    background-color: #f3f3f2;
+    border-radius: 7px;
+}
+
+.navbar-button:hover > .icon {
+    color: black;
+}
+
+.navbar-button:hover > .navbar-button-text {
+    color: black;
+}
