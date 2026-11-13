@@ -1,0 +1,17 @@
+div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 5px;
+}
+
+.people-icon {
+    height: 50px;
+    width: 50px;
+}
+
+div > h1 {
+    font-size: 20px;
+    font-weight: bold;
+    width: 80px;
+}

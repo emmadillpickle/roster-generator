@@ -1,0 +1,21 @@
+.banner {
+    background-color: #f3f3f2;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 20px;
+    margin: 0px;
+    gap: 20px;
+}
+
+.banner-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.banner > p {
+    font-size: 1.1rem;
+    width: 500px;
+    line-height: 1.5;
+}

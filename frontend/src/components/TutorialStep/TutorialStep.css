@@ -1,0 +1,45 @@
+.tutorial-step {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+    border: 1px solid #cbd2da;
+    border-radius: 10px;
+    height: fit-content;
+    padding: 15px 15px 15px 15px;
+    min-width: fit-content;
+}
+
+.tutorial-step > h1 {
+    background-color: #f3f3f2;
+    border-radius: 50%;
+    border: 1px solid #dad9d9;
+    min-width: 40px;
+    height: 40px; 
+
+    font-size: 1.2rem;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0px;
+}
+
+.tutorial-step-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.tutorial-step-detail > h2 {
+    margin: 0px;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.tutorial-step-detail > p {
+    margin: 0px;
+    font-size: 0.9rem;
+}

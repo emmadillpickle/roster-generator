@@ -1,0 +1,14 @@
+.nav-bar {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    gap: 20px;
+    border-right: 1px solid #cbd2da;
+    padding-right: 20px;
+}
+
+.nav-bar > nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
