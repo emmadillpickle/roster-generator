@@ -19,15 +19,15 @@
     text-decoration: none;
 }
 
-.navbar-button:hover {
+.navbar-button:hover, .navbar-button.active {
     background-color: #f3f3f2;
     border-radius: 7px;
 }
 
-.navbar-button:hover > .icon {
+.navbar-button:hover > .icon, .navbar-button.active > .icon {
     color: black;
 }
 
-.navbar-button:hover > .navbar-button-text {
+.navbar-button:hover > .navbar-button-text, .navbar-button.active > .navbar-button-text {
     color: black;
 }

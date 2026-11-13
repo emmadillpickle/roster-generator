@@ -1,17 +1,8 @@
-.home-page {
-    display: grid;
-    grid-template-columns: 250px minmax(0, 1fr);
-    min-height: 100vh;
-}
-
-.home-page-sidebar {
-    position: fixed;
-    height: 100vh;
-}
-
 .home-page-content {
-    width: 100vw;
-    max-width: 1000px;
+    width: 100%;
+    max-width: 750px;
+    min-width: 500px;
+    margin-inline: auto;
     display: flex;
     flex-direction: column;
 }

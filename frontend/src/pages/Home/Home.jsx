@@ -1,5 +1,4 @@
 import './Home.css'
-import Navbar from "../../components/Navbar/Navbar.jsx"
 import { TbCalendarUser } from "react-icons/tb";
 import { PiLightbulbFilamentLight } from "react-icons/pi";
 import TutorialStep from "../../components/TutorialStep/TutorialStep.jsx"
@@ -7,12 +6,12 @@ import Banner from "../../components/Banner/Banner.jsx"
 
 export default function Home() {
     return (
-        <section className="home-page">
-            <aside className="home-page-sidebar">
-                <Navbar/>
-            </aside>
-            <main className="home-page-main">
-                <div className="home-page-content">
+        // <section className="home-page">
+        //     <aside className="home-page-sidebar">
+        //         <Navbar/>
+        //     </aside>
+        //     <main className="home-page-main">
+                <main className="home-page-content">
                     <section className="home-page-header">
                         <TbCalendarUser className="home-page-header-icon"/>
                         <h2>Welcome to</h2>
@@ -47,8 +46,8 @@ export default function Home() {
                             Tip: Make sure all data is up to date before generating the roster for best results.
                         </Banner>
                     </section>
-                </div>
-            </main>
-        </section>
+                </main>
+        //     </main>
+        // </section>
     )
 }

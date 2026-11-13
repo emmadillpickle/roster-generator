@@ -13,7 +13,7 @@ export default function Navbar() {
             <nav>
                 <NavbarButton icon={IoHomeOutline} text="Home" pagePath="/"/>
                 <NavbarButton icon={GoPeople} text="People" pagePath="/people"/>
-                <NavbarButton icon={IoCalendarClearOutline} text="Cell Dates" pagePath="/cell-dates"/>
+                <NavbarButton icon={IoCalendarClearOutline} text="Event Dates" pagePath="/event-dates"/>
                 <NavbarButton icon={FaRegHandshake} text="Pairings" pagePath="/pairings"/>
                 <NavbarButton icon={LuFileSpreadsheet} text="View Roster" pagePath="/roster"/>
             </nav>

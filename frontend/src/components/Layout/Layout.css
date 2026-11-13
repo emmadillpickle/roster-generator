@@ -1,0 +1,21 @@
+.page {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    width: 100%;
+    min-height: 100vh;
+    gap: 32px;
+}
+
+.page-navbar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    align-self: start;
+}
+
+.page-content {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 40px 32px;
+}
