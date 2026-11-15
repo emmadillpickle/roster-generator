@@ -1,0 +1,33 @@
+.roles-summary {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #cbd2da;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 0px;
+}
+
+.summary-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.summary-card-icon {
+    width: 20px;
+    height: 20px;
+    color: #475569;
+}
+
+.summary-card > h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.summary-card > p {
+    margin: 0;
+    color: #64748b;
+    font-size: 0.875rem;
+}

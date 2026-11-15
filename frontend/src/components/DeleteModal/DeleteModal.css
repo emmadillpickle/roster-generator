@@ -1,0 +1,82 @@
+.delete-modal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+    background: white;
+    width: 410px;
+    height: 220px;
+    border-radius: 12px;
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+
+    box-sizing: border-box;
+}
+
+.delete-modal > button {
+    border: none;
+    background-color: white;   
+    font-size: 1.2rem;
+    border-radius: 12px;
+
+    position: sticky;
+    align-self: start;
+    margin: 10px 0px 0px 10px;
+}
+
+.delete-modal > button:hover {
+    background-color: #f1f5f9;
+    color: #1e293b;
+}
+
+.delete-modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-right: 50px;
+    gap: 0px;
+}
+
+.delete-modal-content > h2 {
+    margin: 0px 0px 20px 0px;
+}
+
+.delete-modal-content > p {
+    margin: 0px 0px 20px 0px;
+    text-align: center;
+}
+
+.delete-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+    margin-bottom: -20px;
+}
+
+.close-button {
+    background-color: white;
+    font-size: 1.1rem;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.close-button:hover {
+    background-color: #f1f5f9;
+    color: #1e293b;
+}
+
+.on-delete-button {
+    background-color: rgb(196, 43, 43);
+    color: white;
+    font-size: 1.1rem;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+
+.on-delete-button:hover {
+    background-color: rgb(203, 66, 66);
+}
