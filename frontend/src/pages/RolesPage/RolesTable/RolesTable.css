@@ -1,0 +1,129 @@
+.roles-table-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    overflow-x: auto;
+    background: white;
+    margin-top: 30px;
+    margin-bottom: 20px;
+
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+}
+
+.roles-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.roles-table th {
+    padding: 16px 20px;
+    background-color: #f9fafb;
+    color: #64748b;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-top: 1px solid #e5e7eb;
+}
+
+.roles-table td {
+    padding: 16px 20px;
+    border-top: 1px solid #e5e7eb;
+    font-size: 1.0rem;
+    color: #334155;
+}
+
+.role-type {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 1.0rem;
+}
+
+.role-type.solo {
+    background-color: #eff6ff;
+    color: #2563eb;
+}
+
+.role-type.paired {
+    background-color: #f0fdf4;
+    color: #16a34a;
+}
+
+.role-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.role-actions button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: #64748b;
+    cursor: pointer;
+}
+
+.role-actions button:hover {
+    background-color: #f1f5f9;
+    color: #1e293b;
+}
+
+.role-actions-column {
+    width: 1%;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.role-actions-delete {
+    color: rgb(196, 43, 43);
+}
+
+.roles-table-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    padding: 16px 20px;
+    background: white;
+    width: 100%;
+    margin-bottom: -10px;
+}
+
+.roles-table-toolbar input {
+    margin-left: 15px;
+    max-width: 150px;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    padding: 5px 10px;
+}
+
+.select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.select-arrow {
+    position: absolute;
+    right: 12px;
+    pointer-events: none;
+}
+
+.select-wrapper select {
+    appearance: none;
+    min-width: 150px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    padding: 4.5px 10px;
+}
+
+.role-actions-edit, .role-actions-delete {
+    width: 18px;
+    height: 18px;
+}

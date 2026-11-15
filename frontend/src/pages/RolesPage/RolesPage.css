@@ -1,0 +1,61 @@
+.roles-page-content {
+    width: 100%;
+    min-width: 500px;
+    max-width: 900px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.roles-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.roles-page-header-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0px;
+}
+
+.roles-page-header-text > h1 {
+    font-weight: 700;
+    font-size: 3.2rem;
+    margin: 0px;
+}
+
+.roles-page-header-text > h2 {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin: 0px;
+}
+
+.roles-page-header > button {
+    background-color: black;
+    color: white;
+    font-weight: 700;
+    font-size: 1.0rem;
+    height: 55px;
+    padding: 0px 25px 0px 20px;  
+    border-radius: 10px;
+    border: none;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-role-icon {
+    width: 23px;
+    height: 23px;
+}
+
+.roles-page-summary {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    align-items: center;
+}

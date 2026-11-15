@@ -1,8 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router'
-import Home from './pages/Home/Home.jsx'
+import HomePage from './pages/HomePage/HomePage.jsx'
 import Layout from './components/Layout/Layout.jsx'
+import RolesPage from './pages/RolesPage/RolesPage.jsx'
 import './index.css'
 
 createRoot(document.getElementById('root')).render(
@@ -10,7 +11,8 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
+          <Route index element={<HomePage />} />
+          <Route path="/roles" element={<RolesPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
